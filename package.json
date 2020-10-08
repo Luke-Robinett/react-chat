@@ -1,0 +1,19 @@
+{
+  "name": "react-chat",
+  "version": "1.0.0",
+  "description": "A chat app in React",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luke-Robinett/react-chat.git"
+  },
+  "author": "Luke Robinett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Luke-Robinett/react-chat/issues"
+  },
+  "homepage": "https://github.com/Luke-Robinett/react-chat#readme"
+}
