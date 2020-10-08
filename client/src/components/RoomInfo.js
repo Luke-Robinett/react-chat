@@ -2,9 +2,13 @@ import React from "react";
 
 function RoomInfo(props) {
  return (
-  <div>
-   <h3>Room Info</h3>
-   <p>You're in a room.</p>
+  <div className="col text-light">
+   <h1>Room Info</h1>
+   <p>
+    <strong>
+     You're in a room.
+    </strong>
+   </p>
   </div>
  );
 }

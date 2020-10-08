@@ -6,8 +6,8 @@ function MessageList(props) {
   const messages = [1, 2, 3, 4, 5];
 
   return (
-    <div>
-      { messages.map(message =>
+    <div className="col mx-2 text-muted bg-light">
+      {messages.map(message =>
         <Message key={message.toString()} />
       )}
     </div>

@@ -7,9 +7,11 @@ import ChatPage from "./pages/ChatPage";
 function App() {
   return (
     <Router>
-      <Nav />
-      <Route exact path="/" component={StartPage} />
-      <Route exact path="/chat" component={ChatPage} />
+      <div className="container" style={{fontSize: "13px"}}>
+        <Nav />
+        <Route exact path="/" component={StartPage} />
+        <Route exact path="/chat" component={ChatPage} />
+      </div>
     </Router>
   );
 }

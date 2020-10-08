@@ -8,10 +8,16 @@ import MessageForm from "../components/MessageForm";
 function ChatPage(props) {
  return (
   <Container>
-   <RoomInfo />
-   <RoomUserList />
-   <MessageList />
-   <MessageForm />
+   <div className="row">
+    <RoomInfo />
+   </div>
+   <div className="row" style={{ height: "40em" }}>
+    <MessageList />
+    <RoomUserList />
+   </div>
+   <div className="row">
+    <MessageForm />
+   </div>
   </Container>
  );
 }

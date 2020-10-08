@@ -6,6 +6,11 @@ function StartPage(props) {
   <>
    <h1>Welcome To Chat</h1>
    <hr />
+   <p>
+    <strong>
+     Enter a username, choose a room and start chatting!
+    </strong>
+   </p>
    <LoginForm />
   </>
  );

@@ -7,7 +7,9 @@ class Container extends Component {
 
  render() {
   return (
-   this.props.children
+   <div className="my-2 bg-secondary">
+    {this.props.children}
+   </div>
   );
  }
 }
