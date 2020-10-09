@@ -7,7 +7,7 @@ import ChatPage from "./pages/ChatPage";
 function App() {
   return (
     <Router>
-      <div className="container" style={{fontSize: "13px"}}>
+      <div className="container" style={{fontSize: "16px"}}>
         <Nav />
         <Route exact path="/" component={StartPage} />
         <Route exact path="/chat" component={ChatPage} />
