@@ -3,13 +3,18 @@ import RoomHeader from "./RoomHeader";
 import UserList from "./UserList";
 import MessageList from "./MessageList";
 import Composer from "./Composer";
+import io from "socket.io-client";
 
 class ChatScreen extends Component {
  constructor(props) {
   super(props);
 
+  this.socket = io();
+  this.socket.on("message", message => alert(`${message.user.name}: ${message.text}`));
+
   this.me = {
-   name: this.props.username
+   name: this.props.username,
+   room: this.props.roomName
   };
 
   this.state = {
@@ -42,7 +47,8 @@ class ChatScreen extends Component {
    messages: newMessageList,
    messageText: ""
   });
- }
+  this.socket.emit("message", newMessage);
+ };
 
  componentDidMount() {
   const newUserList = this.state.users;
