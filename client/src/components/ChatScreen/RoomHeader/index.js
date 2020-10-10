@@ -1,16 +1,11 @@
 import React from "react";
 
-function RoomInfo(props) {
+function RoomHeader(props) {
  return (
   <div className="col text-light">
-   <h1>Room Info</h1>
-   <p>
-    <strong>
-     You're in a room.
-    </strong>
-   </p>
+   <h1>{props.roomName}</h1>
   </div>
  );
 }
 
-export default RoomInfo;
+export default RoomHeader;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Nav(props) {
+function Header(props) {
  return (
   <nav className="navbar navbar-dark bg-primary">
    <a className="navbar-brand" href="/">Chat App</a>
@@ -8,4 +8,4 @@ function Nav(props) {
  )
 }
 
-export default Nav;
+export default Header;

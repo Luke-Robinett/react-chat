@@ -1,11 +1,11 @@
 import React from "react";
 
-function MessageForm(props) {
+function Composer(props) {
  return (
   <div className="col p-2">
    <div className="row">
     <div className="col-1">
-     <label htmlFor="messageText">Message: </label>
+     <label className="text-light" htmlFor="messageText">{props.user.name}</label>
     </div>
     <div className="col">
      <input
@@ -13,16 +13,22 @@ function MessageForm(props) {
       className="w-100"
       id="messageText"
       autoFocus
-      value={props.message}
+      placeholder="Type your message..."
+      value={props.text}
       onChange={props.onChange}
+      onKeyUp={props.onKeyUp}
      />
     </div>
     <div className="col-1">
-     <button id="sendButton">Send</button>
+     <button
+      onClick={props.onSend}
+     >
+      Send
+     </button>
     </div>
    </div>
   </div>
  );
 }
 
-export default MessageForm;
+export default Composer;

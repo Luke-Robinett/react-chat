@@ -1,50 +1,83 @@
 import React, { Component } from "react";
-import RoomInfo from "../components/RoomInfo";
-import RoomUserList from "../components/RoomUserList";
-import MessageList from "../components/MessageList";
-import MessageForm from "../components/MessageForm";
+import RoomHeader from "./RoomHeader";
+import UserList from "./UserList";
+import MessageList from "./MessageList";
+import Composer from "./Composer";
 
-class ChatPage extends Component {
+class ChatScreen extends Component {
  constructor(props) {
   super(props);
 
+  this.me = {
+   name: this.props.username
+  };
+
   this.state = {
-   roomInfo: "",
    users: [],
    messages: [],
-   message: "",
-   username: ""
+   messageText: ""
   };
  }
 
- componentDidMount() {
-  this.setState({
-   roomInfo: "",
-   users: [],
-   messages: [],
-   message: "",
-   username: this.props.username
-  });
+ handleCompose = event => {
+  this.setState({ messageText: event.target.value });
+ }
 
-  console.log(this.state);
+ handleKeyUp = event => {
+  if (event.keyCode === 13) {
+   this.handleSendMessage(event);
+  }
+ }
+
+ handleSendMessage = event => {
+  event.preventDefault();
+
+  const newMessage = {
+   user: this.me,
+   text: this.state.messageText
+  };
+  const newMessageList = this.state.messages;
+  newMessageList.push(newMessage);
+  this.setState({
+   messages: newMessageList,
+   messageText: ""
+  });
+ }
+
+ componentDidMount() {
+  const newUserList = this.state.users;
+  newUserList.push(this.me);
+  this.setState({ users: newUserList });
  }
 
  render() {
   return (
-   <>
+   <div className="bg-secondary">
     <div className="row">
-     <RoomInfo />
+     <RoomHeader
+      roomName={this.props.roomName}
+     />
     </div>
     <div className="row" style={{ height: "40em" }}>
-     <MessageList />
-     <RoomUserList />
+     <MessageList
+      messages={this.state.messages}
+     />
+     <UserList
+      users={this.state.users}
+     />
     </div>
     <div className="row">
-     <MessageForm />
+     <Composer
+      onChange={this.handleCompose}
+      onSend={this.handleSendMessage}
+      onKeyUp={this.handleKeyUp}
+      user={this.me}
+      text={this.state.messageText}
+     />
     </div>
-   </>
+   </div>
   );
  }
 }
 
-export default ChatPage;
+export default ChatScreen;

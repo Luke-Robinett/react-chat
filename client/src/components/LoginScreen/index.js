@@ -1,6 +1,6 @@
 import React from "react";
 
-function StartPage(props) {
+function LoginScreen(props) {
   return (
     <>
       <h1>Welcome To Chat</h1>
@@ -36,9 +36,10 @@ function StartPage(props) {
             <select
               required
               onChange={props.onRoomChange}
+              value={props.roomName}
             >
-              <option>General Chat</option>
-              <option>Boring Chat</option>
+              <option value="General Chat">General Chat</option>
+              <option value="Boring Chat">Boring Chat</option>
             </select>
           </label>
         </p>
@@ -54,4 +55,4 @@ function StartPage(props) {
   );
 }
 
-export default StartPage;
+export default LoginScreen;
