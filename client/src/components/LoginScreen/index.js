@@ -24,7 +24,7 @@ function StartPage(props) {
               pattern="^[a-zA-Z][a-zA-Z0-9_]{1,12}$"
               title="2 to 12 characters long, letters, numbers and underscores allowed"
               required
-              value={props.username}
+              value={props.usernameValue}
               onChange={props.onUsernameChange}
             />
           </label>

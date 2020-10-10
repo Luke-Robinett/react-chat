@@ -8,7 +8,7 @@ class Container extends Component {
   super(props);
 
   this.state = {
-   username: "",
+   usernameField: "",
    roomName: "",
    showStart: true
   };
@@ -19,7 +19,7 @@ class Container extends Component {
  }
 
  handleUsernameChange(event) {
-  this.setState({ username: event.target.value });
+  this.setState({ usernameField: event.target.value });
  }
 
  handleRoomChange(event) {
@@ -37,12 +37,14 @@ class Container extends Component {
     <Nav />
     {this.state.showStart
      ? < StartPage
-      username={this.state.username}
+      usernameValue={this.state.usernameField}
       onUsernameChange={this.handleUsernameChange}
       onRoomChange={this.handleRoomChange}
       onSubmit={this.handleSubmit}
      />
-     : <ChatPage />
+     : <ChatPage
+      username={this.state.usernameField}
+     />
     }
    </div>
   );

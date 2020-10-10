@@ -13,6 +13,8 @@ function MessageForm(props) {
       className="w-100"
       id="messageText"
       autoFocus
+      value={props.message}
+      onChange={props.onChange}
      />
     </div>
     <div className="col-1">
