@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "../components/Container";
 import RoomInfo from "../components/RoomInfo";
 import RoomUserList from "../components/RoomUserList";
 import MessageList from "../components/MessageList";
@@ -7,7 +6,7 @@ import MessageForm from "../components/MessageForm";
 
 function ChatPage(props) {
  return (
-  <Container>
+  <>
    <div className="row">
     <RoomInfo />
    </div>
@@ -18,7 +17,7 @@ function ChatPage(props) {
    <div className="row">
     <MessageForm />
    </div>
-  </Container>
+  </>
  );
 }
 

@@ -8,7 +8,12 @@ function MessageForm(props) {
      <label htmlFor="messageText">Message: </label>
     </div>
     <div className="col">
-     <input type="text" className="w-100" id="messageText" />
+     <input
+      type="text"
+      className="w-100"
+      id="messageText"
+      autoFocus
+     />
     </div>
     <div className="col-1">
      <button id="sendButton">Send</button>

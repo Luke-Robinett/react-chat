@@ -1,55 +1,57 @@
-import React, { Component } from "react";
-import axios from "axios";
-import LoginForm from "../components/LoginForm";
+import React from "react";
 
-class StartPage extends Component {
- constructor(props) {
-  super(props);
-
-  this.state = {
-   username: ""
-  };
-  this.onUsernameChange = this.onUsernameChange.bind(this);
-  this.onSubmit = this.onSubmit.bind(this);
- }
-
- onUsernameChange(event) {
-  this.setState({ username: event.target.value });
- }
-
- onSubmit(event) {
-  event.preventDefault();
-  axios.post("/api/login", { username: this.state.username })
-   .then(response => {
-    alert("Logged in!");
-    console.log(response);
-   })
-   .catch(err => {
-    if (err.response)
-     alert(err.response.data);
-    else
-     alert("Unknown error.");
-   });
- }
-
- render() {
+function StartPage(props) {
   return (
-   <>
-    <h1>Welcome To Chat</h1>
-    <hr />
-    <p>
-     <strong>
-      Enter a username, choose a room and start chatting!
-     </strong>
-    </p>
-    <LoginForm
-     usernameValue={this.state.username}
-     onUsernameChange={this.onUsernameChange}
-     onSubmit={this.onSubmit}
-    />
-   </>
+    <>
+      <h1>Welcome To Chat</h1>
+      <hr />
+      <p>
+        <strong>
+          Enter a username, choose a room and start chatting!
+          </strong>
+      </p>
+      <form
+        autoComplete="off"
+        onSubmit={props.onSubmit}
+      >
+        <p>
+          <label>
+            username
+          <br />
+            <input
+              type="text"
+              maxLength="12"
+              pattern="^[a-zA-Z][a-zA-Z0-9_]{1,12}$"
+              title="2 to 12 characters long, letters, numbers and underscores allowed"
+              required
+              value={props.username}
+              onChange={props.onUsernameChange}
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Room
+          <br />
+            <select
+              required
+              onChange={props.onRoomChange}
+            >
+              <option>General Chat</option>
+              <option>Boring Chat</option>
+            </select>
+          </label>
+        </p>
+        <p>
+          <input
+            type="submit"
+            className="btn-lg btn-primary"
+            value="Start Chatting"
+          />
+        </p>
+      </form>
+    </>
   );
- }
 }
 
 export default StartPage;
