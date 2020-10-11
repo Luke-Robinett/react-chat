@@ -9,17 +9,12 @@ class Container extends Component {
 
   this.state = {
    usernameValue: "",
-   roomName: "General Chat",
    showStart: true
   };
  }
 
  handleUsernameChange = event => {
   this.setState({ usernameValue: event.target.value });
- }
-
- handleRoomChange = event => {
-  this.setState({ roomName: event.target.value });
  }
 
  handleSubmit = event => {
@@ -35,12 +30,10 @@ class Container extends Component {
      ? <LoginScreen
       usernameValue={this.state.usernameValue}
       onUsernameChange={this.handleUsernameChange}
-      onRoomChange={this.handleRoomChange}
       onSubmit={this.handleSubmit}
      />
      : <ChatScreen
       username={this.state.usernameValue}
-      roomName={this.state.roomName}
      />
     }
    </div>

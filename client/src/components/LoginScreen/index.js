@@ -7,8 +7,8 @@ function LoginScreen(props) {
       <hr />
       <p>
         <strong>
-          Enter a username, choose a room and start chatting!
-          </strong>
+          Enter a username and start chatting!
+        </strong>
       </p>
       <form
         autoComplete="off"
@@ -27,20 +27,6 @@ function LoginScreen(props) {
               value={props.usernameValue}
               onChange={props.onUsernameChange}
             />
-          </label>
-        </p>
-        <p>
-          <label>
-            Room
-          <br />
-            <select
-              required
-              onChange={props.onRoomChange}
-              value={props.roomName}
-            >
-              <option value="General Chat">General Chat</option>
-              <option value="Boring Chat">Boring Chat</option>
-            </select>
           </label>
         </p>
         <p>
