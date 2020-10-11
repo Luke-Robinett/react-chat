@@ -8,8 +8,7 @@
   },
   "scripts": {
     "start": "node server",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build"
+    "install": "cd client && npm install"
   },
   "repository": {
     "type": "git",
