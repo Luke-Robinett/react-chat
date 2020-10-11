@@ -1,6 +1,15 @@
-const app = require("./express-config");
+const express = require("express");
+const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => res.sendFile(path.join(__dirname, "client", "build", "index.html")));
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => console.log(`Server listening on PORT ${PORT}.`));
+
 let users = [];
 let messages = [];
 
@@ -79,5 +88,3 @@ function botMessage(text) {
 
  return message;
 }
-
-module.exports = server;
