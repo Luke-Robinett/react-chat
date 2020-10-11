@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "start": "concurrently \"parcel watch index.html\" \"sleep 10 && start http://localhost:3000\"",
+    "start": "parcel index.html",
+    "dev": "concurrently \"parcel watch index.html\" \"sleep 10 && start http://localhost:3000\"",
     "build": "parcel build index.html"
   },
   "license": "MIT",

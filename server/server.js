@@ -3,15 +3,31 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 let users = [];
 let messages = [];
-const chatBot = {
- id: "bot",
- name: "ChatBot"
-};
 
 io.on("connect", socket => {
  console.log("Client connected.");
 
- socket.on("join", user => handleJoin(socket, user));
+ socket.on("join", user => {
+  if (!userExists(user.id)) {
+   // Add user to the user list
+   users.push(user);
+
+   // Send all clients the updated user list
+   io.emit("users", users);
+
+   // Send the new user the chat history
+   socket.emit("history", messages);
+
+   // Send everyone but the new user a message that they've joined
+   socket.broadcast.emit("message", botMessage(`${user.name} has joined!`));
+
+   console.log(`${user.name} joined.`);
+  } else {
+   console.log("User already in chat.");
+   console.log(users);
+  }
+ });
+
  socket.on("disconnect", () => {
   const departingUser = users.find(user => user.id === socket.id) || null;
 
@@ -23,14 +39,11 @@ io.on("connect", socket => {
    socket.broadcast.emit("users", users);
 
    // Send everyone but the new user a message that they've left
-   socket.broadcast.emit("message", {
-    user: chatBot,
-    text: `${departingUser.name} has left!`
-   });
+   socket.broadcast.emit("message", botMessage(`${departingUser.name} has left!`));
 
    console.log(`${departingUser.name} left.`);
   } else {
-   console.log("Somebody left... but we have no record they were ever here. A ghost, perhaps? 👻");
+   console.log("Somebody left... but we have no record they were ever here. A ghost, perhaps?");
   }
  });
 
@@ -53,28 +66,18 @@ function userExists(id) {
  return typeof result !== "undefined";
 }
 
-function handleJoin(socket, user) {
- if (!userExists(user.id)) {
-  // Add user to the user list
-  users.push(user);
+function botMessage(text) {
+ const message = {
+  user: {
+   id: "bot",
+   name: "ChatBot"
+  },
+  text: text
+ };
 
-  // Send all clients the updated user list
-  io.emit("users", users);
+ messages.push(message);
 
-  // Send the new user the chat history
-  socket.emit("history", messages);
-
-  // Send everyone but the new user a message that they've joined
-  socket.broadcast.emit("message", {
-   user: chatBot,
-   text: `${user.name} has joined!`
-  });
-
-  console.log(`${user.name} joined.`);
- } else {
-  console.log("User already in chat.");
-  console.log(users);
- }
+ return message;
 }
 
 module.exports = server;
