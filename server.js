@@ -5,7 +5,7 @@ const io = require("socket.io")(server);
 const path = require("path");
 
 app.use(express.static(path.join("client", "build")));
-app.get("*", (req, res) => res.sendFile("index.html", { root: path.join(__dirname, "client", "build", "index.html") }));
+app.get("*", (req, res) => res.sendFile("index.html", { root: path.join(__dirname, "client", "build") }));
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Server listening on PORT ${PORT}.`));
