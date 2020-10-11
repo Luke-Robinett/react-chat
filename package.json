@@ -4,12 +4,7 @@
   "description": "A chat app in React",
   "main": "./server/index.js",
   "scripts": {
-    "start": "node server",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "server": "cd server && nodemon index.js",
-    "client": "cd client && npm run dev",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server"
   },
   "repository": {
     "type": "git",
@@ -28,7 +23,6 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "parcel": "^2.0.0-alpha.3.2",
     "concurrently": "^5.3.0"
   }
 }
