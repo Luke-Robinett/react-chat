@@ -2,9 +2,10 @@
   "name": "react-chat",
   "version": "1.0.0",
   "description": "A chat app in React",
-  "main": "server",
+  "main": "./server/index.js",
   "scripts": {
     "start": "node server",
+    "build": "cd client && npm run build",
     "server": "cd server && nodemon index.js",
     "client": "cd client && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\""
