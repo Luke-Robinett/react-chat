@@ -40,13 +40,15 @@ class ChatScreen extends Component {
  handleSendMessage = event => {
   event.preventDefault();
 
-  const newMessage = {
-   user: this.me,
-   text: this.state.messageText
-  };
+  if (this.state.messageText.trim().length > 0) {
+   const newMessage = {
+    user: this.me,
+    text: this.state.messageText
+   };
 
-  this.socket.emit("message", newMessage);
-  this.setState({ messageText: "" });
+   this.socket.emit("message", newMessage);
+   this.setState({ messageText: "" });
+  }
  };
 
  componentDidMount() {
