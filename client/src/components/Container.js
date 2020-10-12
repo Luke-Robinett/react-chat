@@ -24,8 +24,7 @@ class Container extends Component {
 
  render() {
   return (
-   <div className="container">
-    <Header />
+   <>
     {this.state.showStart
      ? <LoginScreen
       usernameValue={this.state.usernameValue}
@@ -36,7 +35,7 @@ class Container extends Component {
       username={this.state.usernameValue}
      />
     }
-   </div>
+   </>
   );
  }
 }

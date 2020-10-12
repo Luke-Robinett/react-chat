@@ -2,7 +2,7 @@ import React from "react";
 
 function LoginScreen(props) {
   return (
-    <>
+    <div className="container">
       <h1>Welcome To Chat</h1>
       <hr />
       <p>
@@ -37,7 +37,7 @@ function LoginScreen(props) {
           />
         </p>
       </form>
-    </>
+    </div>
   );
 }
 

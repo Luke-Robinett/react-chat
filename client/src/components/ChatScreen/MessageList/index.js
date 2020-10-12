@@ -3,8 +3,11 @@ import Message from "./Message";
 
 function MessageList(props) {
   return (
-    <main className="col mx-2 text-muted bg-light">
-      <h3>Messages</h3>
+    <main
+      className="col room-element mr-sm-1 mr-lg-2 message-list overflow-auto"
+      role="list"
+      aria-live="polite"
+    >
       {props.messages.map((message, index) =>
         <Message
           key={index.toString()}

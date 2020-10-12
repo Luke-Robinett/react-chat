@@ -2,8 +2,10 @@ import React from "react";
 
 function User(props) {
  return (
-  <div>
-   {props.user.name}
+  <div role="listitem">
+   <strong>
+    {props.user.name}
+   </strong>
   </div>
  );
 }

@@ -16,8 +16,13 @@ class ChatScreen extends Component {
   };
 
   this.state = {
-   users: [],
-   messages: [],
+   users: [this.me],
+   messages: [
+    {
+     user: this.me,
+     text: "Hello world!"
+    }
+   ],
    messageText: ""
   };
  }
@@ -51,8 +56,6 @@ class ChatScreen extends Component {
   // Add socket ID to current user's info
   this.socket.on("connect", () => this.me.id = this.socket.id);
 
-  console.log(this.me);
-
   // socket.io event handlers
   this.socket.on("message", message => {
    this.setState({ messages: [...this.state.messages, message] });
@@ -77,11 +80,9 @@ class ChatScreen extends Component {
 
  render() {
   return (
-   <div className="bg-secondary">
-    <div className="row">
-     <RoomHeader />
-    </div>
-    <div className="row" style={{ height: "40em" }}>
+   <div className="container rounded">
+    <RoomHeader />
+    <div className="row room-background p-1 p-sm-2 p-md-3">
      <MessageList
       messages={this.state.messages}
      />
@@ -89,12 +90,11 @@ class ChatScreen extends Component {
       users={this.state.users}
      />
     </div>
-    <div className="row">
+    <div className="row room-background p-1 p-sm-2 p-md-3">
      <Composer
       onChange={this.handleCompose}
       onSend={this.handleSendMessage}
       onKeyUp={this.handleKeyUp}
-      user={this.me}
       text={this.state.messageText}
      />
     </div>

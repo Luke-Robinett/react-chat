@@ -2,8 +2,10 @@ import React from "react";
 
 function Message(props) {
  return (
-  <div>
-   <strong>{props.message.user.name}</strong>, &nbsp;
+  <div role="listitem">
+   <span className="message">
+    {props.message.user.name}:
+   </span>
    {props.message.text}
   </div>
  );

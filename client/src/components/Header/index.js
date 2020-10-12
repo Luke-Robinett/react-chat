@@ -2,8 +2,8 @@ import React from "react";
 
 function Header(props) {
  return (
-  <nav className="navbar navbar-dark bg-primary">
-   <a className="navbar-brand" href="/">Chat App</a>
+  <nav className="navbar navbar-light">
+   <a className="navbar-brand" href="/">Oldschool Chat</a>
   </nav>
  )
 }

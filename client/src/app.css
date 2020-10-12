@@ -1,0 +1,40 @@
+.room-background {
+ background-color: purple;
+ color: white;
+}
+
+.room-element {
+ background-color: white;
+ color: black;
+}
+
+span.message {
+ margin-right: 1em;
+ font-weight: bold;
+}
+
+.composer {
+ padding: 0px;
+}
+
+.message-list {
+ height: 200px;
+}
+
+@media screen and (min-height: 480px) {
+ .message-list {
+  height: 300px;
+ }
+}
+
+@media screen and (min-height: 600px) {
+ .message-list {
+  height: 400px;
+ }
+}
+
+@media screen and (min-height: 900px) {
+ .message-list {
+  height: 700px;
+ }
+}
